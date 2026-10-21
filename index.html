@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Research Paper Summarizer - structured briefings from any paper</title>
+<meta name="description" content="Paste a research paper and get a structured briefing: TL;DR, contributions, method, results, limitations and keywords. Extractive, on-device, no API keys.">
+<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./"><span class="brand-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 3h8l4 4v13a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 5 20V4.5A1.5 1.5 0 0 1 6 3Z"/><path d="M14 3v4h4"/><circle cx="10.5" cy="12.5" r="2.5"/><path d="M12.4 14.4 15 17"/></svg></span><span>Research Paper Summarizer</span></a>
+    <nav class="site-nav">
+      <a class="nav-link" href="#input">Paper</a>
+      <a class="nav-link" href="#briefing">Briefing</a>
+      <a class="nav-link" href="#limits">Limits</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-ghost btn-icon" data-theme-toggle aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg></button>
+      <button class="btn btn-ghost btn-icon menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <section class="hero wrap rise" id="input">
+    <span class="hero-eyebrow">Read a paper in ninety seconds</span>
+    <h1>Structured briefings from any paper</h1>
+    <p class="lede">Paste the text of a research paper. The summarizer finds its sections, scores every sentence, and builds a briefing: TL;DR, key contributions, method, results, limitations and keywords - with the source sentences shown so you can verify every line.</p>
+    <div class="row row-wrap mt16">
+      <button class="btn btn-primary btn-lg" id="btnSample">Summarize the sample paper</button>
+      <label class="btn btn-ghost btn-lg" for="fileInput">Upload .txt</label>
+      <input type="file" id="fileInput" accept=".txt,.md" hidden>
+    </div>
+  </section>
+
+  <section class="wrap rise rise-1 mt16">
+    <div class="card card-pad-lg">
+      <h3 class="mb16">Paper text</h3>
+      <textarea class="input" id="paperText" rows="8" placeholder="Paste the full paper text here - abstract through conclusion is enough..."></textarea>
+      <div class="row row-wrap mt16">
+        <button class="btn btn-primary" id="btnGo">Summarize</button>
+        <label class="small muted row" style="gap:6px">Summary length
+          <select class="input" id="sumLen" style="width:auto"><option value="3">Short (3)</option><option value="5" selected>Medium (5)</option><option value="8">Long (8)</option></select>
+        </label>
+        <span class="small muted" id="paperStats"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap rise rise-2 mt24 hidden" id="briefing">
+    <div class="sec-head">
+      <div><h2 id="paperTitle">Briefing</h2><p class="muted" id="briefMeta"></p></div>
+      <button class="btn btn-ghost btn-sm" id="btnExport">Export briefing</button>
+    </div>
+    <div class="grid grid-4 mb16" id="kpis"></div>
+    <div class="card card-pad-lg mb16">
+      <h3 class="mb16">TL;DR</h3>
+      <div class="stack" id="tldr"></div>
+    </div>
+    <div class="grid grid-2 mb16">
+      <div class="card card-pad-lg"><h3 class="mb16">Key contributions</h3><div class="stack" id="contrib"><p class="muted small">None detected.</p></div></div>
+      <div class="card card-pad-lg"><h3 class="mb16">Results and numbers</h3><div class="stack" id="results"><p class="muted small">None detected.</p></div></div>
+    </div>
+    <div class="grid grid-2 mb16">
+      <div class="card card-pad-lg"><h3 class="mb16">Method</h3><div class="stack" id="method"><p class="muted small">None detected.</p></div></div>
+      <div class="card card-pad-lg"><h3 class="mb16">Limitations and caveats</h3><div class="stack" id="limitsList"><p class="muted small">None detected.</p></div></div>
+    </div>
+    <div class="card card-pad-lg">
+      <h3 class="mb16">Keywords</h3>
+      <div class="row row-wrap" id="keywords"></div>
+    </div>
+  </section>
+
+  <section class="wrap rise rise-3 mt24 mb24" id="limits">
+    <div class="card card-pad-lg">
+      <h2 class="mb16">Honest limits</h2>
+      <ul class="cross-list">
+        <li>Extractive summarization: sentences are selected and ranked, not rewritten. The TL;DR is the paper's own words.</li>
+        <li>Works best on papers with standard sections (abstract, introduction, methods, results, conclusion).</li>
+        <li>It cannot judge correctness or novelty - read the source sentences before citing anything.</li>
+        <li>Plain text input only; copy the text out of the PDF first.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="wrap">Research Paper Summarizer - on-device extractive summarization, no API keys</div></footer>
+<script src="ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
