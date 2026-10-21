@@ -1,5 +1,10 @@
 # Research Paper Summarizer - Python (scikit-learn)
 
+> **Live browser demo:** https://akash991833.github.io/research-paper-summarizer/ - zero-install version. The app in this folder is the pro-grade rebuild; run steps below.
+> **Repo:** https://github.com/AKASH991833/research-paper-summarizer
+
+![research-paper-summarizer in action](../screenshots/briefing-dark.png)
+
 The pro-grade version of the browser demo: TextRank-style extractive summarization with real sentence-graph centrality, section detection, keyword extraction and contribution heuristics. Fully offline.
 
 ## Stack
