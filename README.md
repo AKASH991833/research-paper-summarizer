@@ -27,6 +27,10 @@ Paste the text of a research paper and the summarizer finds its sections, scores
 - It cannot judge correctness or novelty - read the source sentences before citing anything.
 - Plain text input only; copy the text out of the PDF first.
 
+## Python version (scikit-learn)
+
+A pro-grade rebuild with TextRank-style extractive summarization, section detection and keyword extraction lives in [`python-app/`](python-app/) - see its README for run steps. The browser demo above stays the zero-install option.
+
 ## Tech
 
 Vanilla JS, no build step, no dependencies, no network calls. Sentence scoring uses inverse document frequency with position and section weighting.
